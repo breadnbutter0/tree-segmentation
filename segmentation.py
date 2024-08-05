@@ -183,11 +183,11 @@ class Segmentation():
                                    )
         
         print('merging two mask files..')
-        self.merge_automatic_point(self, mask_automatic_fn,  bbox_automatic_fn,
+        self.merge_automatic_point(mask_automatic_fn,  bbox_automatic_fn,
                         mask_point_prompt_fn, bbox_point_prompt_fn, )
         
         print('saving files..')
-        self.save_output(self, mask_all_fn, bbox_all_fn, eType=gdal.GDT_Int32)
+        self.save_output(mask_all_fn, bbox_all_fn, eType=gdal.GDT_Int32)
 
 
     def merge_automatic_point(self, mask_automatic_fn,  bbox_automatic_fn,
@@ -283,16 +283,19 @@ if __name__=='__main__':
     path = os.path.dirname(img_fn)
     fid = os.path.splitext(os.path.basename(img_fn))[0]
 
-    mask_automatic_fn = f'{path}/{fid}_automatic_masks.pkl'
-    bbox_automatic_fn = f'{path}/{fid}_bbox_automatic.pkl'
+    mask_automatic_fn = f'{path}/{fid}_automatic_masks.pkl' # arg 1
+    bbox_automatic_fn = f'{path}/{fid}_bbox_automatic.pkl' # arg 2
 
-    point_prompt_fn = f'{path}/{fid}_point_prompts.pkl'
+    point_prompt_fn = f'{path}/{fid}_point_prompts.pkl' # arg 3
 
-    mask_point_prompt_fn = f'{path}/{fid}_point_masks.pkl'
-    bbox_point_prompt_fn = f'{path}/{fid}_bbox_point_prompt.pkl'
+    mask_point_prompt_fn = f'{path}/{fid}_point_masks.pkl' # arg 4
+    bbox_point_prompt_fn = f'{path}/{fid}_bbox_point_prompt.pkl' # arg 5
 
-    mask_all_fn = f'{path}/{fid}_mask_all.tif'
-    bbox_all_fn = f'{path}/{fid}_bbox_all.pkl'
+    mask_all_fn = f'{path}/{fid}_mask_all.tif' # arg 6
+    bbox_all_fn = f'{path}/{fid}_bbox_all.pkl' # arg 7
+    
+    print(f'Mask file will be saved in: {mask_all_fn}')
+    print(f'Bbox file will be saved in: {bbox_all_fn}')
 
     args=[img_fn, 
           mask_automatic_fn, bbox_automatic_fn, point_prompt_fn, 

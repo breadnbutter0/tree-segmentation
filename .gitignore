@@ -1,3 +1,4 @@
 *.pth
 *.tif
 __pycache__/
+data/
